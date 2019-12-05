@@ -19,6 +19,12 @@ train.py : 모델링 결과가 적용된 예측 모델 학습 수행
 predict.py : 학습된 모델 예측 동작 수행
 ```
 
+## 파이썬 라이브러리
+
+```
+pip install -r requirements.txt
+```
+
 ## 실행 방법
 
 ```
@@ -32,7 +38,8 @@ train.py 수행을 통해 모델 생성 후 predict.py이 되어야 함
 python preprocess.py
 
 * 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
-* 결과 출력 : model 폴더 내 
+* 결과 출력 : model 폴더 내 MinMaxScaler, PolynomialFeatures 변환기 저장
+            학습, 실험 데이터 분리하여 피처 저장
 ```
 
 ### 2) train.py
@@ -40,15 +47,15 @@ python preprocess.py
 ```
 python train.py
 
-* 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
-* 결과 출력 : model 폴더 내 
+* 필수 조건 : preprocess.py를 통해 생성되는 학습, 실험 데이터가 생성되어 있어야 함.
+* 결과 출력 : model 폴더 내 예측기 저장
 ```
 
 ### 3) predict.py
 
 ```
-python preprocess.py
+python preprocess.py -i [input_file] -o [output_file]
 
-* 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
-* 결과 출력 : model 폴더 내 
+* 필수 조건 : input_file은 input 폴더 내에 있어야 함
+* 결과 출력 : 예측 수행 후 output 폴더에 출력 파일 저장
 ```
