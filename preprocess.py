@@ -2,6 +2,7 @@ import os, json
 import warnings
 import shutil
 import datetime
+import pandas as pd
 
 warnings.filterwarnings('ignore')
 
@@ -16,6 +17,27 @@ config_file = "config.json"
 
 with open(config_file, "r") as f:
     config = json.load(f)
+    
+if os.path.isfile(os.path.join(config['data_path'], config['data_file'])) == False:
+
+    # Boston Housing Dataset url
+    dataset_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data"
+
+    # dataset feautre names
+    feature_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM' ,'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
+
+    # Pandas를 통한 dataset read 및 save
+    data_path = './data'
+    housing_original_file = 'housing.data'
+    housing_file = 'housing.csv'
+
+    if os.path.isfile(os.path.join(data_path, housing_original_file)):
+        boston_df = pd.read_csv(os.path.join(config['data_path'], config['data_original_file']), sep="\s+", header=None)
+    else:
+        boston_df = pd.read_csv(dataset_url, sep="\s+", header=None)
+
+    boston_df.columns = feature_names
+    boston_df.to_csv(os.path.join(config['data_path'], config['data_file']), index=False, header=None)
 
 ## data_path에 존재하는 data_file 로드
 data = np.loadtxt(os.path.join(config["data_path"], config["data_file"]), delimiter=",", dtype=np.float32)

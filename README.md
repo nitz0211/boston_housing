@@ -1,13 +1,54 @@
 # Boston Housing
 
-## 1. 폴더 구성
--- data
--- feature
--- input
--- model
--- output
 
-## 2. 실행 방법
-### 2.1. preprocess
-### 2.2. train
-### 2.3. predict
+## 구성 요소
+
+```
+data : 학습 원천 데이터 housing.csv 보관 폴더.
+feature : 학습 데이터 numpy train_x, train_y, test_x, test_y 보관 폴더.
+input : predict를 하기 위한 데이터 파일 보관 폴더.
+model : 스케일러, 다항 생성기, 모델 등 보관 폴더.
+output : predict을 완료 하면 결과 파일 보관 폴더
+
+config.json : 환경설정 파일.
+
+exploratory data analysis.ipynb : 각 데이터 속성별 탐색 수행
+predictive modeling.ipynb : 예측 모델링 수행
+preprocess.py : 학습을 위한 변환기 피팅, 전처리 및 피처 생성 수행
+train.py : 모델링 결과가 적용된 예측 모델 학습 수행
+predict.py : 학습된 모델 예측 동작 수행
+```
+
+## 실행 방법
+
+```
+preprocess.py로 스케일러, 변환기 및 피처 생성 후 train.py 수행해야 하는 순서 필요
+train.py 수행을 통해 모델 생성 후 predict.py이 되어야 함
+```
+
+### 1) preprocess.py
+
+```
+python preprocess.py
+
+* 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
+* 결과 출력 : model 폴더 내 
+```
+
+### 2) train.py
+
+```
+python train.py
+
+* 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
+* 결과 출력 : model 폴더 내 
+```
+
+### 3) predict.py
+
+```
+python preprocess.py
+
+* 필수 조건 : 인터넷이 연결되어 있거나 data 폴더 내 housing.dat 필요
+* 결과 출력 : model 폴더 내 
+```
