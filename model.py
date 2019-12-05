@@ -21,5 +21,5 @@ class BostonHousingPriceRegressor(BaseEstimator, RegressorMixin):
     def predict(self, X):
         ridge_predict = self.ridge.predict(X)
         rf_predict = self.rf.predict(X)
-        # 앙상블 모델로 Ridge에 0.4, RandomForest에 0.6 가중치 부여
-        return ridge_predict * 0.4 + rf_predict * 0.6
+        # 앙상블 모델로 Ridge에 0.5, RandomForest에 0.5 가중치 부여
+        return ridge_predict * 0.5 + rf_predict * 0.5
