@@ -1,0 +1,13 @@
+{
+    "data_path": "data",
+    "feature_path": "feature",
+    "model_path": "model",
+    "input_path": "input",
+    "output_path": "output",
+    "model_backup_path": "model/backup",
+    "data_original_file": "housing.data",
+    "data_file": "housing.csv",    
+    "scaler_file": "housing_scaler.lib",
+    "polynomial_file": "housing_polynomial.lib",
+    "model_file": "housing_model.lib"
+}
